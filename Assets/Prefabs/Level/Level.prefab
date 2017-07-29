@@ -35,8 +35,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4920428977976204}
   - component: {fileID: 33725601236587488}
+  - component: {fileID: 65897735848383936}
   - component: {fileID: 64991292200068748}
   - component: {fileID: 23605556786897148}
+  - component: {fileID: 114900071414439884}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -238,13 +240,25 @@ MeshCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405145233431080}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65897735848383936
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405145233431080}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.1, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &108577907394059040
 Light:
   m_ObjectHideFlags: 1
@@ -306,9 +320,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc5df1fb52ef46acb35af9bbcfb0d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawns: []
+  spawns:
+  - spawnPrefabs:
+    - {fileID: 4739164684595982, guid: a023a78754f2c4a18b8f1bada5ccad4b, type: 2}
+    spawnDistance: 20
+  - spawnPrefabs:
+    - {fileID: 4901749765560988, guid: 731133d51cffb4b10a844e559e1edeb1, type: 2}
+    spawnDistance: 40
   spawnContainer: {fileID: 4007676694805174}
   spawnLimit: -1
+--- !u!114 &114900071414439884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405145233431080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c71003dab86844eda2d86cff3d244e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114968272831028414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -323,6 +354,7 @@ MonoBehaviour:
   horizonPosition: 10
   width: 3
   height: 2
+  speed: 4
 --- !u!122 &122620945125003266
 Halo:
   m_ObjectHideFlags: 1

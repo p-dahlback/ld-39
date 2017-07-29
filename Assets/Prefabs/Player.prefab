@@ -20,11 +20,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4064375925557048}
   - component: {fileID: 33190164062362886}
-  - component: {fileID: 136774255086837928}
+  - component: {fileID: 65584530070837144}
   - component: {fileID: 23217744153258204}
+  - component: {fileID: 54323170445480338}
   - component: {fileID: 114375230463920122}
   - component: {fileID: 114129265988145360}
-  - component: {fileID: 54323170445480338}
+  - component: {fileID: 114367176763565960}
+  - component: {fileID: 114713310291750516}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -39,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1977717616442968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.5, y: 0.2, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -93,12 +95,24 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 10
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!65 &65584530070837144
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977717616442968}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114129265988145360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,9 +124,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6414b5de30dab42bfbb2c918d34ce76b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  maxHealth: 3
+  deathHandler: {fileID: 114367176763565960}
+  damageHandler: {fileID: 114713310291750516}
   height: 0.2
   width: 0.5
+--- !u!114 &114367176763565960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977717616442968}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09927389370f44c9998dc979ee8d945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 54323170445480338}
+  duration: 3
+  spinSpeed: 160
+  bounceMultiplier: 100
 --- !u!114 &114375230463920122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,18 +159,22 @@ MonoBehaviour:
   body: {fileID: 54323170445480338}
   horizontalSpeed: 1800
   verticalSpeed: 2400
+  bounceSpeed: 1000
   maxHorizontalSpeed: 4
-  maxVerticalSpeed: 10
---- !u!136 &136774255086837928
-CapsuleCollider:
+  maxVerticalSpeed: 15
+--- !u!114 &114713310291750516
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1977717616442968}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a230192997ff845dc9399086f62b4726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 114129265988145360}
+  renderer: {fileID: 23217744153258204}
+  transparentMaterial: {fileID: 2100000, guid: 7db7b108b7ce540a7aa6a4416bad12b7, type: 2}
+  duration: 3
+  flashFrequency: 2

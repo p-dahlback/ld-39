@@ -9,6 +9,7 @@ public class PlayerController : ActorController {
 
 	public float horizontalSpeed = 2f;
 	public float verticalSpeed = 2f;
+	public float bounceSpeed = 2f;
 
 	public float maxHorizontalSpeed = 2f;
 	public float maxVerticalSpeed = 5f;
@@ -20,9 +21,10 @@ public class PlayerController : ActorController {
 	
 	// Update is called once per frame
 	void Update () {
+		if (!player.IsDead) {
+			Move();
+		}
 		var level = GameController.Instance.currentLevel;
-
-		Move();
 		ForceWithinBounds(level.width, level.height);
 	}
 
@@ -35,14 +37,16 @@ public class PlayerController : ActorController {
 
 		body.AddForce(horizontalForce, verticalForce, 0);
 		ClampToMaxSpeed();
-
-		var distance = GameController.Instance.CurrentDistance;
-		distance += player.speed * Time.deltaTime;
-		GameController.Instance.CurrentDistance = distance;
 	}
 
 	protected override void Act() {
 		
+	}
+
+	public override void Bounce() {
+		var speed = player.IsDead ? bounceSpeed / 2f : bounceSpeed;
+		body.AddForce(0, speed, 0);
+		ClampToMaxSpeed();
 	}
 
 	private void ClampToMaxSpeed() {

@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
 				spawnQueue.Dequeue();
 				var prefab = spawn.GetPrefabToSpawn();
 				var instance = Instantiate(prefab, spawnContainer);
-				var approacher = instance.GetComponent<Approacher>();
+				var approacher = instance.GetComponent<ApproacherController>();
 				instance.position = new Vector3(0, -approacher.height, transform.position.z);
 
 				spawnedObjectCount++;

@@ -5,6 +5,7 @@ public abstract class ActorController : MonoBehaviour
 {
 	protected abstract void Move();
 	protected abstract void Act();
+	public abstract void Bounce();
 
 	// Use this for initialization
 	void Start ()

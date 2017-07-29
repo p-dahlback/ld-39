@@ -8,6 +8,8 @@ public class Level : MonoBehaviour {
 	public float width = 2;
 	public float height = 2;
 
+	public float speed = 4;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -15,6 +17,8 @@ public class Level : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		var distance = GameController.Instance.CurrentDistance;
+		distance += speed * Time.deltaTime;
+		GameController.Instance.CurrentDistance = distance;
 	}
 }

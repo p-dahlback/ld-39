@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Approacher : MonoBehaviour
+public class ApproacherController : ActorController
 {
 	public float yPositionAtHorizon = 0;
 	public float height;
@@ -22,10 +22,21 @@ public class Approacher : MonoBehaviour
 		if (DestroyIfPassed()) {
 			return;
 		}
+		Move();
+	}
 
+	protected override void Move() {
 		var level = GameController.Instance.currentLevel;
 		ApproachCamera();
 		ApproachHorizonForLevel(level);
+	}
+
+	protected override void Act() {
+		// Do nothing
+	}
+
+	public override void Bounce() {
+		// Do nothing
 	}
 
 	private bool DestroyIfPassed() {
