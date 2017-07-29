@@ -35,6 +35,10 @@ public class PlayerController : ActorController {
 
 		body.AddForce(horizontalForce, verticalForce, 0);
 		ClampToMaxSpeed();
+
+		var distance = GameController.Instance.CurrentDistance;
+		distance += player.speed * Time.deltaTime;
+		GameController.Instance.CurrentDistance = distance;
 	}
 
 	protected override void Act() {
@@ -52,7 +56,7 @@ public class PlayerController : ActorController {
 		body.velocity = velocity;
 	}
 
-	private void ForceWithinBounds(int width, int height) {
+	private void ForceWithinBounds(float width, float height) {
 		var halfWidth = width / 2f;
 		var halfPlayerWidth = player.width / 2f;
 		var halfPlayerHeight = player.height / 2f;

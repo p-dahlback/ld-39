@@ -11,6 +11,11 @@ public class GameController : MonoBehaviour {
 
 	public Level currentLevel;
 
+	public float CurrentDistance {
+		get;
+		set;
+	}
+
 	void Awake () {
 		if (_instance != null) {
 			Destroy(_instance.gameObject);
@@ -27,4 +32,6 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Level : MonoBehaviour {
 
-	public int width = 2;
-	public int height = 2;
+	public float horizonPosition = 5;
+	public float width = 2;
+	public float height = 2;
 
 	// Use this for initialization
 	void Start () {
