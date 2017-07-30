@@ -61,7 +61,7 @@ public class PlayerController : ActorController {
 	}
 
 	public override void Bounce() {
-		var speed = player.IsDead ? bounceSpeed / 2f : bounceSpeed;
+		var speed = player.IsDead ? bounceSpeed / 3f : bounceSpeed;
 		body.AddForce(0, speed, 0);
 		ClampToMaxSpeed();
 
