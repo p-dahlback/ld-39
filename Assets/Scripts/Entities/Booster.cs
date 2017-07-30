@@ -23,6 +23,9 @@ public class Booster : MonoBehaviour {
 			var playerController = collider.GetComponent<PlayerController>();
 			player.targetSpeed = Mathf.Max(player.currentSpeed, player.baseSpeed) + speedIncrease;
 			player.energy += Mathf.Min(player.energy + energyIncrease, player.maxEnergy);
+			if (player.energy > player.maxEnergy) {
+				player.energy = player.maxEnergy;
+			}
 			playerController.Bounce();
 		}
 	}
