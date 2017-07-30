@@ -390,6 +390,21 @@ Prefab:
       propertyPath: spawnContainer
       value: 
       objectReference: {fileID: 1659392073}
+    - target: {fileID: 114334583305585874, guid: cb89f9b36a75f403dadaddd2145a331e,
+        type: 2}
+      propertyPath: flashColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114334583305585874, guid: cb89f9b36a75f403dadaddd2145a331e,
+        type: 2}
+      propertyPath: flashColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114334583305585874, guid: cb89f9b36a75f403dadaddd2145a331e,
+        type: 2}
+      propertyPath: flashColor.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb89f9b36a75f403dadaddd2145a331e, type: 2}
   m_IsPrefabParent: 0
