@@ -21,12 +21,22 @@ public class Booster : MonoBehaviour {
 		if (collider.gameObject.layer == (int) Layers.Player) {
 			var player = collider.GetComponent<Player>();
 			var playerController = collider.GetComponent<PlayerController>();
-			player.targetSpeed = Mathf.Max(player.currentSpeed, player.baseSpeed) + speedIncrease;
-			player.energy += Mathf.Min(player.energy + energyIncrease, player.maxEnergy);
-			if (player.energy > player.maxEnergy) {
-				player.energy = player.maxEnergy;
+			BoostPlayer(player, playerController);
+			if (!player.IsDead) {
+				AddEnergyToPlayer(player);
 			}
-			playerController.Bounce();
 		}
+	}
+
+	private void AddEnergyToPlayer(Player player) {
+		player.energy += Mathf.Min(player.energy + energyIncrease, player.maxEnergy);
+		if (player.energy > player.maxEnergy) {
+			player.energy = player.maxEnergy;
+		}
+	}
+
+	private void BoostPlayer(Player player, PlayerController playerController) {
+		player.targetSpeed = Mathf.Max(player.currentSpeed, player.baseSpeed) + speedIncrease;
+		playerController.Bounce();
 	}
 }

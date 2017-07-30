@@ -31,6 +31,8 @@ public class PlayerController : ActorController {
 			Move();
 			Act();
 			ReduceHeightByEnergy();
+		} else if (player.IsDead) {
+			heightLimitFactor = 1.0f;
 		}
 		var level = GameController.Instance.currentLevel;
 		ForceWithinBounds(level.width, level.height);

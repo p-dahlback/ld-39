@@ -27,7 +27,7 @@ public class Player : Entity {
 	}
 
 	void Update() {
-		if (GameController.Instance.GameState != GameState.InGame) {
+		if (GameController.Instance.GameState != GameState.InGame && !IsDead) {
 			return;
 		}
 
