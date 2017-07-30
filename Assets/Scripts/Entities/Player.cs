@@ -21,6 +21,8 @@ public class Player : Entity {
 	}
 
 	void Update() {
+		targetSpeed = Mathf.Clamp(targetSpeed, minSpeed, maxSpeed);
+
 		var difference = targetSpeed - currentSpeed;
 		if (Mathf.Abs(difference) > 0.1) {
 			currentSpeed = currentSpeed + difference * speedChangeFactor * Time.deltaTime;
