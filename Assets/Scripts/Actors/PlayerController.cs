@@ -10,9 +10,13 @@ public class PlayerController : ActorController {
 	public float horizontalSpeed = 2f;
 	public float verticalSpeed = 2f;
 	public float bounceSpeed = 2f;
+	public float bounceHeightLimitIncrease = 0.2f;
 
 	public float maxHorizontalSpeed = 2f;
 	public float maxVerticalSpeed = 5f;
+
+	private float heightLimitFactor = 1.0f;
+	private float bounceHeightAllowance = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +30,7 @@ public class PlayerController : ActorController {
 			Act();
 		}
 		var level = GameController.Instance.currentLevel;
+		ReduceHeightByEnergy();
 		ForceWithinBounds(level.width, level.height);
 	}
 
@@ -55,6 +60,10 @@ public class PlayerController : ActorController {
 		var speed = player.IsDead ? bounceSpeed / 2f : bounceSpeed;
 		body.AddForce(0, speed, 0);
 		ClampToMaxSpeed();
+
+		if (heightLimitFactor < bounceHeightLimitIncrease) {
+			bounceHeightAllowance = bounceHeightLimitIncrease;
+		}
 	}
 
 	private void ClampToMaxSpeed() {
@@ -68,10 +77,23 @@ public class PlayerController : ActorController {
 		body.velocity = velocity;
 	}
 
+	private void ReduceHeightByEnergy() {
+		heightLimitFactor = (player.energy + 1) / player.maxEnergy;
+		if (bounceHeightAllowance > 0) {
+			heightLimitFactor += bounceHeightAllowance;
+			bounceHeightAllowance -= player.energyExpenditureRate / player.maxEnergy * Time.deltaTime;
+		}
+
+		if (heightLimitFactor > 1.0f) {
+			heightLimitFactor = 1.0f;
+		}
+	}
+
 	private void ForceWithinBounds(float width, float height) {
 		var halfWidth = width / 2f;
 		var halfPlayerWidth = player.width / 2f;
 		var halfPlayerHeight = player.height / 2f;
+		var heightWithLimit = height * heightLimitFactor;
 		var position = transform.position;
 		if (position.x - halfPlayerWidth < -halfWidth) {
 			position.x = -halfWidth + halfPlayerWidth;
@@ -80,8 +102,8 @@ public class PlayerController : ActorController {
 		}
 		if (position.y - halfPlayerHeight < 0) {
 			position.y = halfPlayerHeight;
-		} else if (position.y + halfPlayerHeight > height) {
-			position.y = height - halfPlayerHeight;
+		} else if (position.y + halfPlayerHeight > heightWithLimit) {
+			position.y = heightWithLimit - halfPlayerHeight;
 		}
 		transform.position = position;
 	}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Booster : MonoBehaviour {
 
 	public float speedIncrease = 2f;
+	public float energyIncrease = 6f;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,7 @@ public class Booster : MonoBehaviour {
 			var player = collider.GetComponent<Player>();
 			var playerController = collider.GetComponent<PlayerController>();
 			player.targetSpeed = Mathf.Max(player.currentSpeed, player.baseSpeed) + speedIncrease;
+			player.energy += Mathf.Min(player.energy + energyIncrease, player.maxEnergy);
 			playerController.Bounce();
 		}
 	}

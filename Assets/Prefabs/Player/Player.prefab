@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114129265988145360}
   - component: {fileID: 114367176763565960}
   - component: {fileID: 114713310291750516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 10
   m_AngularDrag: 0.5
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
@@ -135,6 +135,9 @@ MonoBehaviour:
   targetSpeed: 0
   speedChangeFactor: 2
   currentSpeed: 0
+  maxEnergy: 10
+  energy: 0
+  energyExpenditureRate: 1
 --- !u!114 &114367176763565960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,6 +169,7 @@ MonoBehaviour:
   horizontalSpeed: 1800
   verticalSpeed: 2400
   bounceSpeed: 1000
+  bounceHeightLimitIncrease: 0.4
   maxHorizontalSpeed: 4
   maxVerticalSpeed: 15
 --- !u!114 &114713310291750516

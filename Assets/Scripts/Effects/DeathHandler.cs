@@ -14,6 +14,7 @@ public class DeathHandler : ActorController {
 	void OnEnable () {
 		time = 0;
 		RandomSpin(1.0f);
+		body.useGravity = true;
 	}
 	
 	// Update is called once per frame

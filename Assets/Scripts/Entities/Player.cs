@@ -15,12 +15,35 @@ public class Player : Entity {
 	public float speedChangeFactor = 0.6f;
 	public float currentSpeed;
 
+
+	public float maxEnergy = 10f;
+	public float energy;
+	public float energyExpenditureRate = 1f;
+
 	void Start() {
 		targetSpeed = baseSpeed;
 		currentSpeed = baseSpeed;
+		energy = maxEnergy;
 	}
 
 	void Update() {
+		ExpendEnergy();
+		ApproachTargetSpeed();
+		GameController.Instance.currentLevel.Speed = currentSpeed;
+	}
+
+	private void ExpendEnergy() {
+		if (energy > maxEnergy) {
+			energy = maxEnergy;
+		}
+		energy -= energyExpenditureRate * Time.deltaTime;
+
+		if (energy < 0) {
+			energy = 0;
+		}
+	}
+
+	private void ApproachTargetSpeed() {
 		targetSpeed = Mathf.Clamp(targetSpeed, minSpeed, maxSpeed);
 
 		var difference = targetSpeed - currentSpeed;
@@ -33,6 +56,5 @@ public class Player : Entity {
 			}
 		}
 
-		GameController.Instance.currentLevel.Speed = currentSpeed;
 	}
 }
