@@ -23,6 +23,7 @@ public class PlayerController : ActorController {
 	void Update () {
 		if (!player.IsDead) {
 			Move();
+			Act();
 		}
 		var level = GameController.Instance.currentLevel;
 		ForceWithinBounds(level.width, level.height);
@@ -40,7 +41,14 @@ public class PlayerController : ActorController {
 	}
 
 	protected override void Act() {
-		
+		var button = "Jump";
+		if (Input.GetButtonDown(button)) {
+			player.targetSpeed = player.minSpeed;
+		} else if (Input.GetButtonUp(button)) {
+			if (player.targetSpeed == player.minSpeed) {
+				player.targetSpeed = player.baseSpeed;
+			}
+		}
 	}
 
 	public override void Bounce() {
