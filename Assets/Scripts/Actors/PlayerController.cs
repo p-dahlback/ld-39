@@ -50,13 +50,20 @@ public class PlayerController : ActorController {
 	}
 
 	protected override void Act() {
-		var button = "Jump";
-		if (Input.GetButtonDown(button)) {
+		var slowButton = "Fire2";
+		var fastButton = "Fire1";
+		// The ship doesn't speed up automatically when we let go, so we need to handle this case
+		if (Input.GetButtonDown(slowButton)) {
 			player.targetSpeed = player.minSpeed;
-		} else if (Input.GetButtonUp(button)) {
+		} else if (Input.GetButtonUp(slowButton)) {
 			if (player.targetSpeed == player.minSpeed) {
 				player.targetSpeed = player.baseSpeed;
 			}
+		}
+
+		// The ship WILL however slow down by itself once we let go
+		if (Input.GetButton(fastButton)) {
+			player.targetSpeed = player.fastSpeed;
 		}
 	}
 

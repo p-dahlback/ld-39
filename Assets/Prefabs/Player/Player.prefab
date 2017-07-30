@@ -41,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1977717616442968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.2, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -132,12 +132,16 @@ MonoBehaviour:
   baseSpeed: 4
   maxSpeed: 12
   minSpeed: 2
+  fastSpeed: 8
   targetSpeed: 0
   speedChangeFactor: 2
   currentSpeed: 0
   maxEnergy: 10
   energy: 0
   energyExpenditureRate: 1
+  energySlowExpenditureRate: 0.8
+  energyFastExpenditureRate: 1.2
+  expendEnergy: 1
 --- !u!114 &114367176763565960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,6 +176,7 @@ MonoBehaviour:
   bounceHeightLimitIncrease: 0.4
   maxHorizontalSpeed: 4
   maxVerticalSpeed: 15
+  allowVerticalMovement: 0
 --- !u!114 &114713310291750516
 MonoBehaviour:
   m_ObjectHideFlags: 1

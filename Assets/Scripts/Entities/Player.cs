@@ -10,6 +10,7 @@ public class Player : Entity {
 	public float baseSpeed = 4;
 	public float maxSpeed = 12;
 	public float minSpeed = 2;
+	public float fastSpeed = 8;
 
 	public float targetSpeed;
 	public float speedChangeFactor = 0.6f;
@@ -18,6 +19,8 @@ public class Player : Entity {
 	public float maxEnergy = 10f;
 	public float energy;
 	public float energyExpenditureRate = 1f;
+	public float energySlowExpenditureRate = 1f;
+	public float energyFastExpenditureRate = 1f;
 	public bool expendEnergy = true;
 
 	void Start() {
@@ -44,7 +47,15 @@ public class Player : Entity {
 		if (energy > maxEnergy) {
 			energy = maxEnergy;
 		}
-		energy -= energyExpenditureRate * Time.deltaTime;
+		float expenditureRate;
+		if (targetSpeed == minSpeed) {
+			expenditureRate = energySlowExpenditureRate;
+		} else if (targetSpeed == fastSpeed) {
+			expenditureRate = energyFastExpenditureRate;
+		} else {
+			expenditureRate = energyExpenditureRate;
+		}
+		energy -= expenditureRate * Time.deltaTime;
 
 		if (energy < 0) {
 			energy = 0;
