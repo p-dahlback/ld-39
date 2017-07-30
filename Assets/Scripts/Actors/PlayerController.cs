@@ -15,6 +15,8 @@ public class PlayerController : ActorController {
 	public float maxHorizontalSpeed = 2f;
 	public float maxVerticalSpeed = 5f;
 
+	public bool allowVerticalMovement = false;
+
 	private float heightLimitFactor = 1.0f;
 	private float bounceHeightAllowance = 0f;
 
@@ -25,18 +27,18 @@ public class PlayerController : ActorController {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!player.IsDead) {
+		if (!player.IsDead && GameController.Instance.GameState == GameState.InGame) {
 			Move();
 			Act();
+			ReduceHeightByEnergy();
 		}
 		var level = GameController.Instance.currentLevel;
-		ReduceHeightByEnergy();
 		ForceWithinBounds(level.width, level.height);
 	}
 
 	protected override void Move() {
 		var horizontalThrust = Input.GetAxis("Horizontal");
-		var verticalThrust = Input.GetAxis("Vertical");
+		var verticalThrust = allowVerticalMovement ? Input.GetAxis("Vertical") : 0.0f;
 
 		var horizontalForce = horizontalSpeed * horizontalThrust * Time.deltaTime;
 		var verticalForce = verticalSpeed * verticalThrust * Time.deltaTime;

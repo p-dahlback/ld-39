@@ -23,7 +23,9 @@ public class Spawner : MonoBehaviour
 		}
 
 		var distance = GameController.Instance.CurrentDistance;
-		SpawnUntilDistance(distance);
+		if (GameController.Instance.GameState == GameState.InGame) {
+			SpawnUntilDistance(distance);
+		}
 	}
 
 	public void SpawnUntilDistance(float distance) {

@@ -15,10 +15,10 @@ public class Player : Entity {
 	public float speedChangeFactor = 0.6f;
 	public float currentSpeed;
 
-
 	public float maxEnergy = 10f;
 	public float energy;
 	public float energyExpenditureRate = 1f;
+	public bool expendEnergy = true;
 
 	void Start() {
 		targetSpeed = baseSpeed;
@@ -27,12 +27,20 @@ public class Player : Entity {
 	}
 
 	void Update() {
+		if (GameController.Instance.GameState != GameState.InGame) {
+			return;
+		}
+
 		ExpendEnergy();
 		ApproachTargetSpeed();
 		GameController.Instance.currentLevel.Speed = currentSpeed;
 	}
 
 	private void ExpendEnergy() {
+		if (!expendEnergy) {
+			return;
+		}
+
 		if (energy > maxEnergy) {
 			energy = maxEnergy;
 		}
