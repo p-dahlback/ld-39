@@ -88,6 +88,10 @@ public class PlayerController : ActorController {
 		if (Input.GetButton(fastButton)) {
 			player.targetSpeed = player.fastSpeed;
 		}
+
+		if (Debug.isDebugBuild && Input.GetKeyDown(KeyCode.Alpha1)) {
+			player.Damage(1000);
+		}
 	}
 
 	public override void Bounce() {
