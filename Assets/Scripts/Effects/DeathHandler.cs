@@ -7,12 +7,16 @@ public class DeathHandler : ActorController {
 	public Rigidbody body;
 	public Transform dyingObject;
 	public Transform deathReplacement;
+	public AudioSource deathNoise;
+
 	public float duration;
 	public float spinSpeed = 4;
 	public float bounceMultiplier = 10;
 	public float replacementSpawnTimeOffset = 0.0f;
+	public float deathNoiseTime = 0.2f;
 
 	private float time = 0;
+	private float deathNoiseTimer = 0;
 	private bool generatedReplacement = false;
 
 	void OnEnable () {
@@ -29,6 +33,13 @@ public class DeathHandler : ActorController {
 	// Update is called once per frame
 	void Update () {
 		time += Time.deltaTime;
+		deathNoiseTimer += Time.deltaTime;
+
+		if (deathNoiseTimer >= deathNoiseTime) {
+			deathNoiseTimer %= deathNoiseTime;
+			deathNoise.Stop();
+			deathNoise.Play();
+		}
 
 		if (!generatedReplacement && deathReplacement != null && time >= duration - replacementSpawnTimeOffset) {
 			generatedReplacement = true;

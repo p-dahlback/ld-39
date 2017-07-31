@@ -4,11 +4,15 @@ using System.Collections;
 public class ShipSplash : MonoBehaviour
 {
 	public Transform contact;
+	public AudioSource sound;
 	public float minimumDistanceToContact = 0.5f;
 	public float targetYPosition = 0f;
 	public float yPositionChangeRate = 2f;
+	public float soundTime = 0.25f;
 
 	private Entity entity;
+
+	private float time = 0f;
 
 	// Use this for initialization
 	void Start ()
@@ -32,6 +36,13 @@ public class ShipSplash : MonoBehaviour
 		if (contactPosition.y > minimumDistanceToContact) {
 			DestroySelf();
 			return;
+		}
+
+		time += Time.deltaTime;
+		if (time >= soundTime) {
+			time %= soundTime;
+			sound.Stop();
+			sound.Play();
 		}
 
 		var position = contactPosition;

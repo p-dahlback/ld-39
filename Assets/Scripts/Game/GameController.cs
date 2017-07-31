@@ -69,27 +69,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void PlayerTookDamage() {
-		var random = Random.Range(0, 6);
-		switch(random) {
-		case 0:
-			dialogBox.SetDialog("aaahh!", true, 2.0f);
-			break;
-		case 1:
-			dialogBox.SetDialog("nooo!", true, 2.0f);
-			break;
-		case 2:
-			dialogBox.SetDialog("that's not fair!", true, 2.0f);
-			break;
-		case 3:
-			dialogBox.SetDialog("why did this happen!", true, 2.0f);
-			break;
-		case 4:
-			dialogBox.SetDialog("oww!", true, 2.0f);
-			break;
-		case 5:
-			dialogBox.SetDialog("i bid my dongue!", true, 2.0f);
-			break;
-		}
+		StartCoroutine("DamageGab");
 	}
 
 	public void SpeedIncrease(int number) {
@@ -128,6 +108,31 @@ public class GameController : MonoBehaviour {
 		}
 		foreach (var child in children) {
 			Destroy(child.gameObject);
+		}
+	}
+
+	IEnumerator DamageGab() {
+		yield return new WaitForSeconds(0.2f);
+		var random = Random.Range(0, 6);
+		switch(random) {
+		case 0:
+			dialogBox.SetDialog("aaahh!", true, 2.0f);
+			break;
+		case 1:
+			dialogBox.SetDialog("nooo!", true, 2.0f);
+			break;
+		case 2:
+			dialogBox.SetDialog("that's not fair!", true, 2.0f);
+			break;
+		case 3:
+			dialogBox.SetDialog("why did this happen!", true, 2.0f);
+			break;
+		case 4:
+			dialogBox.SetDialog("oww!", true, 2.0f);
+			break;
+		case 5:
+			dialogBox.SetDialog("i bid my dongue!", true, 2.0f);
+			break;
 		}
 	}
 
