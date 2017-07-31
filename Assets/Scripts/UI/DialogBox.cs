@@ -9,6 +9,9 @@ public class DialogBox : MonoBehaviour {
 	public Image portrait;
 	public Text textBox;
 
+	public AudioSource openSound;
+	public AudioSource closeSound;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -36,11 +39,13 @@ public class DialogBox : MonoBehaviour {
 	}
 
 	IEnumerator DisplayTextAfterCommsOpened(float uptime) {
+		openSound.Play();
 		portraitAnimator.SetBool("Start", false);
 		yield return new WaitForSeconds(0.3f);
 		textBox.gameObject.SetActive(true);
 		yield return new WaitForSeconds(uptime);
 		portraitAnimator.SetBool("Close", true);
+		closeSound.Play();
 		yield return new WaitForSeconds(0.3f);
 		portrait.gameObject.SetActive(false);
 		textBox.gameObject.SetActive(false);
@@ -50,6 +55,7 @@ public class DialogBox : MonoBehaviour {
 		if (portraitAnimator.isActiveAndEnabled) {
 			portraitAnimator.SetBool("Start", false);
 			portraitAnimator.SetBool("Close", true);
+			closeSound.Play();
 			yield return new WaitForSeconds(0.3f);
 		}
 		portrait.gameObject.SetActive(false);
