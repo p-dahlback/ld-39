@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Player : Entity {
 
-	public Transform[] engines;
+	public EngineExhaust[] engines;
+
+	public float minExhaustScale = 0.5f;
+	public float maxExhaustScale = 2.0f;
 
 	public float height = 0.2f;
 	public float width = 0.5f;
@@ -76,6 +79,20 @@ public class Player : Entity {
 			if (targetSpeed > baseSpeed) {
 				targetSpeed = baseSpeed;
 			}
+		}
+		RegulateExhaustSize();
+	}
+
+	private void RegulateExhaustSize() {
+		var scale = 1.0f;
+		if (targetSpeed > baseSpeed) {
+			scale = maxExhaustScale;
+		} else if (targetSpeed < baseSpeed) {
+			scale = minExhaustScale;
+		}
+
+		foreach (var engine in engines) {
+			engine.targetScale = scale;
 		}
 	}
 

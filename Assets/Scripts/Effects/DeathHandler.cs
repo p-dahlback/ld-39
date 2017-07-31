@@ -10,6 +10,7 @@ public class DeathHandler : ActorController {
 	public float duration;
 	public float spinSpeed = 4;
 	public float bounceMultiplier = 10;
+	public float replacementSpawnTimeOffset = 0.0f;
 
 	private float time = 0;
 
@@ -28,13 +29,13 @@ public class DeathHandler : ActorController {
 	void Update () {
 		time += Time.deltaTime;
 
-		if (time >= duration) {
+		if (deathReplacement != null && time >= duration - replacementSpawnTimeOffset) {
 			var position = transform.position;
+			var deathInstance = Instantiate(deathReplacement);
+			deathInstance.position = position;
+		}
+		if (time >= duration) {
 			Destroy(gameObject);
-			if (deathReplacement != null) {
-				var deathInstance = Instantiate(deathReplacement);
-				deathInstance.position = position;
-			}
 		}
 	}
 

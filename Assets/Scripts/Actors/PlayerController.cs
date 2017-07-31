@@ -86,7 +86,9 @@ public class PlayerController : ActorController {
 
 		// The ship WILL however slow down by itself once we let go
 		if (Input.GetButton(fastButton)) {
-			player.targetSpeed = player.fastSpeed;
+			if (player.targetSpeed < player.fastSpeed) {
+				player.targetSpeed = player.fastSpeed;
+			}
 		}
 
 		if (Debug.isDebugBuild && Input.GetKeyDown(KeyCode.Alpha1)) {
