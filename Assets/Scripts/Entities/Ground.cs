@@ -19,7 +19,6 @@ public class Ground : MonoBehaviour {
 	void OnTriggerEnter(Collider collider) {
 		var entity = collider.GetComponent<Entity>();
 		if (entity != null) {
-			Debug.Log("Hit Ground!");
 			entity.Damage(1);
 		}
 

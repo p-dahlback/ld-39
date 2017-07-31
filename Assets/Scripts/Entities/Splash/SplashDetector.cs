@@ -38,10 +38,8 @@ public class SplashDetector : MonoBehaviour
 			splash = Instantiate(shipSplashPrefab, splashContainer);
 			var shipSplash = splash.GetComponent<ShipSplash>();
 			shipSplash.contact = collider.transform;
-			Debug.Log("Ship splash!");
 		} else {
 			splash = Instantiate(fallSplashPrefab, splashContainer);
-			Debug.Log("Other splash!");
 		}
 		var position = splash.position;
 		position.x = collider.transform.position.x;

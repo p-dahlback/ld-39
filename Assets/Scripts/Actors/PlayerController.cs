@@ -92,7 +92,16 @@ public class PlayerController : ActorController {
 		}
 
 		if (Debug.isDebugBuild && Input.GetKeyDown(KeyCode.Alpha1)) {
+			player.RemoveEffect(EntityEffect.Invincibility);
 			player.Damage(1000);
+		}
+
+		if (Debug.isDebugBuild && Input.GetKeyDown(KeyCode.Alpha2)) {
+			if (player.HasEffect(EntityEffect.Invincibility)) {
+				player.RemoveEffect(EntityEffect.Invincibility);
+			} else {
+				player.AddEffect(EntityEffect.Invincibility);
+			}
 		}
 	}
 

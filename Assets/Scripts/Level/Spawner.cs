@@ -5,11 +5,16 @@ using System.Collections.Generic;
 public class Spawner : MonoBehaviour
 {
 	public Spawn[] spawns;
+	public Spawn goal;
 	public Transform spawnContainer;
 	public int spawnLimit = -1;
+	public int resetsBeforeGoal = 3;
 
 	private Queue<Spawn> spawnQueue;
 	private int spawnedObjectCount = 0;
+	private int resetCount = 0;
+
+	private float distanceSinceReset = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -52,9 +57,23 @@ public class Spawner : MonoBehaviour
 	public void Reset() {
 		var distance = GameController.Instance.CurrentDistance;
 		spawnQueue = new Queue<Spawn>();
-		foreach (Spawn spawn in spawns) {
-			spawn.spawnDistance += distance;
-			spawnQueue.Enqueue(spawn);
+		GameController.Instance.SpeedIncrease(resetCount);
+		resetCount += 1;
+		Debug.Log("Reset spawner!" + resetCount);
+		if (resetCount >= resetsBeforeGoal) {
+			goal.spawnDistance = distance + 20f;
+			spawnedObjectCount = 0;
+			spawnLimit = 1;
+			spawnQueue.Enqueue(goal);
+		} else {
+			var additionalDistance = distance > 0f ? 20f - distanceSinceReset : 0f;
+			distanceSinceReset = distance;
+			var spawnCount = 0;
+			foreach (Spawn spawn in spawns) {
+				spawn.spawnDistance += distance + additionalDistance;
+				spawnQueue.Enqueue(spawn);
+				spawnCount++;
+			}
 		}
 	}
 }

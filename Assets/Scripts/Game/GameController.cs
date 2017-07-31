@@ -92,6 +92,20 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	public void SpeedIncrease(int number) {
+		switch (number) {
+		case 1:
+			dialogBox.SetDialog("energy levels are dropping even faster!", true, 2.0f);
+			break;
+		case 2:
+			dialogBox.SetDialog("noo it's just getting worse!", true, 2.0f);
+			break;
+		case 3:
+			dialogBox.SetDialog("save meee!", true, 2.0f);
+			break;
+		}
+	}
+
 	private void GameStateDidChange(GameState oldState, GameState newState) {
 		if (oldState == GameState.Start) {
 			CurrentDistance = 0;

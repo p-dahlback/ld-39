@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedIncrease: 8
-  energyIncrease: 6
+  energyIncrease: 10
 --- !u!212 &212080451879188192
 SpriteRenderer:
   m_ObjectHideFlags: 1

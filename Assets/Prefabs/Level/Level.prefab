@@ -409,7 +409,7 @@ MonoBehaviour:
   spawns:
   - spawnPrefabs:
     - {fileID: 4747165848102250, guid: 8288ba703c1434b57825f4b0be2a2e29, type: 2}
-    spawnDistance: 10
+    spawnDistance: 5
   - spawnPrefabs:
     - {fileID: 4180564037006804, guid: 7bc800d40c88d4c8b99bf3ff71b7a54b, type: 2}
     spawnDistance: 35
@@ -441,13 +441,13 @@ MonoBehaviour:
     - {fileID: 4739164684595982, guid: a023a78754f2c4a18b8f1bada5ccad4b, type: 2}
     spawnDistance: 220
   - spawnPrefabs:
-    - {fileID: 4989591928589734, guid: 8bf785447d8014d34b63dc1ea5d2fd90, type: 2}
+    - {fileID: 4180564037006804, guid: 7bc800d40c88d4c8b99bf3ff71b7a54b, type: 2}
     spawnDistance: 235
   - spawnPrefabs:
     - {fileID: 4944626263686512, guid: 8597dd33afe2049dbbd2ff9c6b4424c5, type: 2}
     spawnDistance: 250
   - spawnPrefabs:
-    - {fileID: 4168282917809702, guid: 48610f81c2a144beda60cb75ab1197ae, type: 2}
+    - {fileID: 4032344309109564, guid: d4c5d9406e1ab45dca033715aec22a97, type: 2}
     spawnDistance: 280
   - spawnPrefabs:
     - {fileID: 4014903849324966, guid: 40f8e1853987d4c1b8b077e424421ad1, type: 2}
@@ -455,8 +455,16 @@ MonoBehaviour:
   - spawnPrefabs:
     - {fileID: 4931137712710300, guid: fa1cefbc754c34a1b9c46d7714ff3fdf, type: 2}
     spawnDistance: 360
+  - spawnPrefabs:
+    - {fileID: 4256720999014236, guid: 3988abc839e384dccba99e5d83fcd279, type: 2}
+    spawnDistance: 380
+  goal:
+    spawnPrefabs:
+    - {fileID: 4832192859777094, guid: 6a97b5a5610a84f428cfa70277df9c31, type: 2}
+    spawnDistance: 0
   spawnContainer: {fileID: 4007676694805174}
   spawnLimit: -1
+  resetsBeforeGoal: 4
 --- !u!114 &114900071414439884
 MonoBehaviour:
   m_ObjectHideFlags: 1

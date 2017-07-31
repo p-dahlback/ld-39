@@ -20,7 +20,6 @@ public class ShipSplash : MonoBehaviour
 	void Update ()
 	{
 		if (contact == null || !contact.gameObject.activeInHierarchy) {
-			Debug.Log("Contact gone; destroying self");
 			DestroySelf();
 			return;
 		}
@@ -31,7 +30,6 @@ public class ShipSplash : MonoBehaviour
 
 		var contactPosition = contact.position;
 		if (contactPosition.y > minimumDistanceToContact) {
-			Debug.Log("Contact lifted; destroying self");
 			DestroySelf();
 			return;
 		}

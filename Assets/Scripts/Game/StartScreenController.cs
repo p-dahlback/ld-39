@@ -91,7 +91,7 @@ public class StartScreenController : MonoBehaviour, IRotationListener, IPosition
 		}
 
 		if (cameraInPosition && playerInPosition && State == StartScreenState.End) {
-			SceneManager.LoadSceneAsync(1);
+			SceneManager.LoadScene(1);
 		}
 	}
 }
