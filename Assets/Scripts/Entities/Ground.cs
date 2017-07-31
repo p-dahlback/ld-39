@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour {
 
+	public SplashDetector splashDetector;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -29,5 +31,6 @@ public class Ground : MonoBehaviour {
 				}
 			}
 		}
+		splashDetector.FallSplash(collider);
 	}
 }

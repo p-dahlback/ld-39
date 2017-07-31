@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 95217125205190998}
-  duration: 0.25
+  duration: 0.15
 --- !u!212 &212128457011344082
 SpriteRenderer:
   m_ObjectHideFlags: 1

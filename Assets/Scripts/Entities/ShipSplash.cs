@@ -8,10 +8,12 @@ public class ShipSplash : MonoBehaviour
 	public float targetYPosition = 0f;
 	public float yPositionChangeRate = 2f;
 
+	private Entity entity;
+
 	// Use this for initialization
 	void Start ()
 	{
-	
+		entity = contact.GetComponent<Entity>();
 	}
 	
 	// Update is called once per frame
@@ -19,6 +21,10 @@ public class ShipSplash : MonoBehaviour
 	{
 		if (contact == null || !contact.gameObject.activeInHierarchy) {
 			Debug.Log("Contact gone; destroying self");
+			DestroySelf();
+			return;
+		}
+		if (entity != null && entity.IsDead) {
 			DestroySelf();
 			return;
 		}

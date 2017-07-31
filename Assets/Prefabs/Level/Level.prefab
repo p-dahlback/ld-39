@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c71003dab86844eda2d86cff3d244e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splashDetector: {fileID: 114328310480479802}
 --- !u!114 &114968272831028414
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -19,10 +19,22 @@ public class SplashDetector : MonoBehaviour
 	
 	}
 
+	public void FallSplash(Collider collider) {
+		var splash = Instantiate(fallSplashPrefab, splashContainer);
+		var position = splash.position;
+		position.x = collider.transform.position.x;
+		position.z = collider.transform.position.z - 0.5f;
+		splash.position = position;
+	}
+
 	void OnTriggerEnter(Collider collider) {
 		Transform splash;
 
-		if (collider.gameObject.layer == (int) Layers.Player) {
+		var player = collider.GetComponent<Player>();
+		if (player != null) {
+			if (player.IsDead) {
+				return;
+			}
 			splash = Instantiate(shipSplashPrefab, splashContainer);
 			var shipSplash = splash.GetComponent<ShipSplash>();
 			shipSplash.contact = collider.transform;
@@ -33,7 +45,7 @@ public class SplashDetector : MonoBehaviour
 		}
 		var position = splash.position;
 		position.x = collider.transform.position.x;
-		position.z = collider.transform.position.z;
+		position.z = collider.transform.position.z - 0.5f;
 		splash.position = position;
 	}
 }

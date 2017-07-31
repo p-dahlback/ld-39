@@ -13,6 +13,7 @@ public class DeathHandler : ActorController {
 	public float replacementSpawnTimeOffset = 0.0f;
 
 	private float time = 0;
+	private bool generatedReplacement = false;
 
 	void OnEnable () {
 		time = 0;
@@ -29,7 +30,8 @@ public class DeathHandler : ActorController {
 	void Update () {
 		time += Time.deltaTime;
 
-		if (deathReplacement != null && time >= duration - replacementSpawnTimeOffset) {
+		if (!generatedReplacement && deathReplacement != null && time >= duration - replacementSpawnTimeOffset) {
+			generatedReplacement = true;
 			var position = transform.position;
 			var deathInstance = Instantiate(deathReplacement);
 			deathInstance.position = position;
