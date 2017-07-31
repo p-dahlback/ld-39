@@ -100,5 +100,6 @@ public class Player : Entity {
 		foreach (var engine in engines) {
 			engine.gameObject.SetActive(false);
 		}
+		GameController.Instance.PlayerDied();
 	}
 }

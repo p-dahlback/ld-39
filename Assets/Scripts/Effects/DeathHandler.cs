@@ -37,6 +37,7 @@ public class DeathHandler : ActorController {
 			deathInstance.position = position;
 		}
 		if (time >= duration) {
+			GameController.Instance.GameState = GameState.GameOver;
 			Destroy(gameObject);
 		}
 	}

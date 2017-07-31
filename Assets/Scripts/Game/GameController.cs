@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
 	public Level currentLevel;
 	public Player player;
 	public Transform spawnContainer;
+	public DialogBox dialogBox;
 
 	private GameState state = GameState.InGame;
 
@@ -48,11 +49,16 @@ public class GameController : MonoBehaviour {
 		
 	}
 
+	public void PlayerDied() {
+		dialogBox.SetDialog("aaahh!", true, 2.0f);
+	}
+
 	private void GameStateDidChange(GameState oldState, GameState newState) {
 		if (oldState == GameState.Start) {
 			CurrentDistance = 0;
 			DestroySpawns();
 		}
+
 	}
 
 	private void DestroySpawns() {
