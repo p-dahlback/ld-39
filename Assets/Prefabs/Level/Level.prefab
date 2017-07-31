@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4048351541536544}
   - component: {fileID: 65958153239450554}
+  - component: {fileID: 65263647018151018}
   - component: {fileID: 114328310480479802}
   m_Layer: 10
   m_Name: Splash Detector
@@ -292,6 +293,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405145233431080}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65263647018151018
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284587161222030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: -1.2, z: 0}
 --- !u!65 &65897735848383936
 BoxCollider:
   m_ObjectHideFlags: 1

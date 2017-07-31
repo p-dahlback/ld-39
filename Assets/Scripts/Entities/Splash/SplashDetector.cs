@@ -19,11 +19,11 @@ public class SplashDetector : MonoBehaviour
 	
 	}
 
-	public void FallSplash(Collider collider) {
+	public void FallSplash(Vector3 otherPosition) {
 		var splash = Instantiate(fallSplashPrefab, splashContainer);
 		var position = splash.position;
-		position.x = collider.transform.position.x;
-		position.z = collider.transform.position.z - 0.5f;
+		position.x = otherPosition.x;
+		position.z = otherPosition.z - 0.5f;
 		splash.position = position;
 	}
 

@@ -31,6 +31,6 @@ public class Ground : MonoBehaviour {
 				}
 			}
 		}
-		splashDetector.FallSplash(collider);
+		splashDetector.FallSplash(collider.transform.position);
 	}
 }
