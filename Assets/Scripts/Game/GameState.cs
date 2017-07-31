@@ -5,7 +5,7 @@ public enum GameState
 {
 	Start,
 	InGame,
-	Paused,
+	Finished,
 	GameOver
 }
 

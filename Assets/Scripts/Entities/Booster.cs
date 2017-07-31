@@ -28,14 +28,14 @@ public class Booster : MonoBehaviour {
 		}
 	}
 
-	private void AddEnergyToPlayer(Player player) {
+	protected virtual void AddEnergyToPlayer(Player player) {
 		player.energy += Mathf.Min(player.energy + energyIncrease, player.maxEnergy);
 		if (player.energy > player.maxEnergy) {
 			player.energy = player.maxEnergy;
 		}
 	}
 
-	private void BoostPlayer(Player player, PlayerController playerController) {
+	protected virtual void BoostPlayer(Player player, PlayerController playerController) {
 		player.targetSpeed = Mathf.Max(player.currentSpeed, player.baseSpeed) + speedIncrease;
 		playerController.Bounce(transform);
 	}

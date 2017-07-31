@@ -101,6 +101,10 @@ public class GameController : MonoBehaviour {
 		if (newState == GameState.GameOver) {
 			StartCoroutine("GameOverGab");
 		}
+
+		if (newState == GameState.Finished) {
+			StartCoroutine("FinishGab");
+		}
 	}
 
 	private void DestroySpawns() {
@@ -128,5 +132,21 @@ public class GameController : MonoBehaviour {
 		}
 		yield return new WaitForSeconds(4.0f);
 		SceneManager.LoadSceneAsync(1);
+	}
+
+	IEnumerator FinishGab() {
+		switch(Random.Range(0, 3)) {
+		case 0:
+			dialogBox.SetDialog("whooaaa!!", true, 2.0f);
+			break;
+		case 1:
+			dialogBox.SetDialog("liftooooff!!", true, 2.0f);
+			break;
+		case 2:
+			dialogBox.SetDialog("here i cooome!!", true, 2.0f);
+			break;
+		}
+		yield return new WaitForSeconds(4.0f);
+		SceneManager.LoadSceneAsync(2);
 	}
 }

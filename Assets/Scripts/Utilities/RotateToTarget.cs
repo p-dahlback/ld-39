@@ -10,7 +10,7 @@ public class RotateToTarget : MonoBehaviour
 	private float rotation;
 
 	void OnEnable() {
-		rotation = transform.rotation.y;
+		rotation = transform.rotation.eulerAngles.y;
 	}
 
 	// Use this for initialization
