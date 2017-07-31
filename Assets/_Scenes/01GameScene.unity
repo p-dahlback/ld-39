@@ -147,11 +147,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114021140827162874, guid: f83dc8ff64b26492198ada72950121bd,
-        type: 2}
-      propertyPath: rotationChangeFactor
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f83dc8ff64b26492198ada72950121bd, type: 2}
   m_IsPrefabParent: 0
@@ -415,6 +410,24 @@ Prefab:
       propertyPath: flashColor.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114909305403634004, guid: cb89f9b36a75f403dadaddd2145a331e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 87feb880bafe34cf1a92212dd52ff2d7,
+        type: 3}
+    - target: {fileID: 114797795518982444, guid: cb89f9b36a75f403dadaddd2145a331e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 87feb880bafe34cf1a92212dd52ff2d7,
+        type: 3}
+    - target: {fileID: 114285357088026344, guid: cb89f9b36a75f403dadaddd2145a331e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 87feb880bafe34cf1a92212dd52ff2d7,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb89f9b36a75f403dadaddd2145a331e, type: 2}
   m_IsPrefabParent: 0
