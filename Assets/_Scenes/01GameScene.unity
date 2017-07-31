@@ -108,7 +108,7 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &787605949
+--- !u!1001 &196592999
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -125,7 +125,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4064375925557048, guid: f83dc8ff64b26492198ada72950121bd, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4064375925557048, guid: f83dc8ff64b26492198ada72950121bd, type: 2}
       propertyPath: m_LocalRotation.x
@@ -146,6 +146,11 @@ Prefab:
     - target: {fileID: 4064375925557048, guid: f83dc8ff64b26492198ada72950121bd, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114021140827162874, guid: f83dc8ff64b26492198ada72950121bd,
+        type: 2}
+      propertyPath: rotationChangeFactor
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f83dc8ff64b26492198ada72950121bd, type: 2}
@@ -322,6 +327,11 @@ Prefab:
       propertyPath: height
       value: 1.25
       objectReference: {fileID: 0}
+    - target: {fileID: 123102253415287684, guid: 802a223cacbc24c759738586b5a1cbbb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 802a223cacbc24c759738586b5a1cbbb, type: 2}
   m_IsPrefabParent: 0
@@ -329,7 +339,7 @@ Prefab:
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114129265988145360, guid: f83dc8ff64b26492198ada72950121bd,
     type: 2}
-  m_PrefabInternal: {fileID: 787605949}
+  m_PrefabInternal: {fileID: 196592999}
   m_Script: {fileID: 11500000, guid: 6414b5de30dab42bfbb2c918d34ce76b, type: 3}
 --- !u!4 &1659392073 stripped
 Transform:

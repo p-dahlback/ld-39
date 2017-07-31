@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : Entity {
 
+	public Transform[] engines;
+
 	public float height = 0.2f;
 	public float width = 0.5f;
 
@@ -11,6 +13,7 @@ public class Player : Entity {
 	public float maxSpeed = 12;
 	public float minSpeed = 2;
 	public float fastSpeed = 8;
+	public float speedModifier = 1.0f;
 
 	public float targetSpeed;
 	public float speedChangeFactor = 0.6f;
@@ -65,15 +68,20 @@ public class Player : Entity {
 	private void ApproachTargetSpeed() {
 		targetSpeed = Mathf.Clamp(targetSpeed, minSpeed, maxSpeed);
 
-		var difference = targetSpeed - currentSpeed;
+		var difference = targetSpeed * speedModifier - currentSpeed;
 		if (Mathf.Abs(difference) > 0.1) {
 			currentSpeed = currentSpeed + difference * speedChangeFactor * Time.deltaTime;
 		} else {
-			currentSpeed = targetSpeed;
+			currentSpeed = targetSpeed * speedModifier;
 			if (targetSpeed > baseSpeed) {
 				targetSpeed = baseSpeed;
 			}
 		}
+	}
 
+	protected override void OnDeath() {
+		foreach (var engine in engines) {
+			engine.gameObject.SetActive(false);
+		}
 	}
 }

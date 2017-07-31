@@ -7,6 +7,13 @@ public class PlayerController : ActorController {
 	public Player player;
 	public Rigidbody body;
 
+	public ShipLean sideLean;
+	public ShipLean frontLean;
+
+	public float sideRotationDeadZone = 0.5f;
+	public float sideRotation = 30f;
+	public float frontRotation = 10f;
+
 	public float horizontalSpeed = 2f;
 	public float verticalSpeed = 2f;
 	public float bounceSpeed = 2f;
@@ -47,6 +54,22 @@ public class PlayerController : ActorController {
 
 		body.AddForce(horizontalForce, verticalForce, 0);
 		ClampToMaxSpeed();
+
+		if (horizontalThrust < -sideRotationDeadZone) {
+			sideLean.targetRotation = sideRotation;
+		} else if (horizontalThrust > sideRotationDeadZone) {
+			sideLean.targetRotation = -sideRotation;
+		} else {
+			sideLean.targetRotation = 0f;
+		}
+
+		if (body.velocity.y > 0) {
+			frontLean.targetRotation = -frontRotation;
+		} else if (heightLimitFactor < 1.0) {
+			frontLean.targetRotation = frontRotation;
+		} else {
+			frontLean.targetRotation = 0f;
+		}
 	}
 
 	protected override void Act() {
@@ -106,6 +129,7 @@ public class PlayerController : ActorController {
 		var halfPlayerHeight = player.height / 2f;
 		var heightWithLimit = height * heightLimitFactor;
 		var position = transform.position;
+		var velocity = body.velocity;
 		if (position.x - halfPlayerWidth < -halfWidth) {
 			position.x = -halfWidth + halfPlayerWidth;
 		} else if (position.x + halfPlayerWidth > halfWidth) {
@@ -113,9 +137,12 @@ public class PlayerController : ActorController {
 		}
 		if (position.y - halfPlayerHeight < 0) {
 			position.y = halfPlayerHeight;
+			velocity.y = 0;
 		} else if (position.y + halfPlayerHeight > heightWithLimit) {
 			position.y = heightWithLimit - halfPlayerHeight;
+			velocity.y = 0;
 		}
 		transform.position = position;
+		body.velocity = velocity;
 	}
 }

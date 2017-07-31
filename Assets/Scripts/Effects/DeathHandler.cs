@@ -5,6 +5,8 @@ using UnityEngine;
 public class DeathHandler : ActorController {
 
 	public Rigidbody body;
+	public Transform dyingObject;
+	public Transform deathReplacement;
 	public float duration;
 	public float spinSpeed = 4;
 	public float bounceMultiplier = 10;
@@ -15,6 +17,11 @@ public class DeathHandler : ActorController {
 		time = 0;
 		RandomSpin(1.0f);
 		body.useGravity = true;
+
+		if (dyingObject != null) {
+			var dyingInstance = Instantiate(dyingObject, transform);
+			dyingInstance.localPosition = Vector3.zero;
+		}
 	}
 	
 	// Update is called once per frame
@@ -22,7 +29,12 @@ public class DeathHandler : ActorController {
 		time += Time.deltaTime;
 
 		if (time >= duration) {
+			var position = transform.position;
 			Destroy(gameObject);
+			if (deathReplacement != null) {
+				var deathInstance = Instantiate(deathReplacement);
+				deathInstance.position = position;
+			}
 		}
 	}
 
