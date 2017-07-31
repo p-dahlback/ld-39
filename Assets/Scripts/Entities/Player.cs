@@ -70,6 +70,7 @@ public class Player : Entity {
 
 	private void ApproachTargetSpeed() {
 		targetSpeed = Mathf.Clamp(targetSpeed, minSpeed, maxSpeed);
+		RegulateExhaustSize();
 
 		var difference = targetSpeed * speedModifier - currentSpeed;
 		if (Mathf.Abs(difference) > 0.1) {
@@ -80,7 +81,6 @@ public class Player : Entity {
 				targetSpeed = baseSpeed;
 			}
 		}
-		RegulateExhaustSize();
 	}
 
 	private void RegulateExhaustSize() {
