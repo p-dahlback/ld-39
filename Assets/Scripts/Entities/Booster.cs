@@ -37,6 +37,7 @@ public class Booster : MonoBehaviour {
 
 	protected virtual void BoostPlayer(Player player, PlayerController playerController) {
 		player.targetSpeed = Mathf.Max(player.currentSpeed, player.baseSpeed) + speedIncrease;
+		player.boostSound.Play();
 		playerController.Bounce(transform);
 	}
 }

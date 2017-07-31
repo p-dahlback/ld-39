@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Player : Entity {
 
-	public EngineExhaust[] engines;
+	public EngineExhaust[] exhausts;
+	public Engine engine;
+	public AudioSource fuelSound;
+	public AudioSource damageSound;
+	public AudioSource boostSound;
 
 	public float minExhaustScale = 0.5f;
 	public float maxExhaustScale = 2.0f;
@@ -61,10 +65,14 @@ public class Player : Entity {
 		} else {
 			expenditureRate = energyExpenditureRate;
 		}
+		var energyBefore = energy;
 		energy -= expenditureRate * Time.deltaTime;
 
-		if (energy < 0) {
+		if (energy <= 0) {
 			energy = 0;
+			if (energyBefore > 0) {
+				fuelSound.Play();
+			}
 		}
 	}
 
@@ -87,21 +95,26 @@ public class Player : Entity {
 		var scale = 1.0f;
 		if (targetSpeed > baseSpeed) {
 			scale = maxExhaustScale;
+			engine.targetPitch = energy > 0 ? engine.fastEnginePitch : engine.standardEnginePitch;
 		} else if (targetSpeed < baseSpeed) {
 			scale = minExhaustScale;
+			engine.targetPitch = energy > 0 ? engine.slowEnginePitch : engine.slowEnginePitch * 0.8f;
+		} else {
+			engine.targetPitch = energy > 0 ? engine.standardEnginePitch : engine.slowEnginePitch;
 		}
 
-		foreach (var engine in engines) {
+		foreach (var engine in exhausts) {
 			engine.targetScale = scale;
 		}
 	}
 
 	protected override void OnDamage() {
 		GameController.Instance.PlayerTookDamage();
+		damageSound.Play();
 	}
 
 	protected override void OnDeath() {
-		foreach (var engine in engines) {
+		foreach (var engine in exhausts) {
 			engine.gameObject.SetActive(false);
 		}
 		GameController.Instance.PlayerDied();
