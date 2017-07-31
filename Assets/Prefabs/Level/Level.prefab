@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1794192730198586}
   m_IsPrefabParent: 1
+--- !u!1 &1284587161222030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4048351541536544}
+  - component: {fileID: 65958153239450554}
+  - component: {fileID: 114328310480479802}
+  m_Layer: 10
+  m_Name: Splash Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1373466434934708
 GameObject:
   m_ObjectHideFlags: 0
@@ -36,7 +53,6 @@ GameObject:
   - component: {fileID: 4920428977976204}
   - component: {fileID: 33725601236587488}
   - component: {fileID: 65897735848383936}
-  - component: {fileID: 64991292200068748}
   - component: {fileID: 23605556786897148}
   - component: {fileID: 114900071414439884}
   m_Layer: 0
@@ -74,6 +90,21 @@ GameObject:
   - component: {fileID: 122620945125003266}
   m_Layer: 0
   m_Name: Sun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1766570231896046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4951331077968322}
+  m_Layer: 10
+  m_Name: Splash Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +153,20 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4554851269689990}
-  m_RootOrder: 4
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4048351541536544
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284587161222030}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalScale: {x: 20, y: 0.4, z: 20}
+  m_Children: []
+  m_Father: {fileID: 4554851269689990}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4061025018900408
 Transform:
@@ -148,7 +192,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4554851269689990}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4554851269689990
 Transform:
@@ -163,8 +207,10 @@ Transform:
   - {fileID: 4878936414809062}
   - {fileID: 4061025018900408}
   - {fileID: 4920428977976204}
+  - {fileID: 4048351541536544}
   - {fileID: 4376509198514018}
   - {fileID: 4007676694805174}
+  - {fileID: 4951331077968322}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -193,6 +239,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4554851269689990}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4951331077968322
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1766570231896046}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4554851269689990}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23605556786897148
 MeshRenderer:
@@ -233,20 +292,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405145233431080}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64991292200068748
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1405145233431080}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &65897735848383936
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -254,10 +299,22 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405145233431080}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 0.1, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65958153239450554
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284587161222030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &108577907394059040
 Light:
@@ -309,6 +366,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114328310480479802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284587161222030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ed7fc6b85664a069a58621481faa5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipSplashPrefab: {fileID: 4325403942250732, guid: ffafcddda561b49df9d69066033a8b25,
+    type: 2}
+  fallSplashPrefab: {fileID: 4411485126712414, guid: fa78859c72355449b9e5c45d8c06b4c2,
+    type: 2}
+  splashContainer: {fileID: 4951331077968322}
 --- !u!114 &114843503698879926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -322,11 +395,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawns:
   - spawnPrefabs:
-    - {fileID: 4739164684595982, guid: a023a78754f2c4a18b8f1bada5ccad4b, type: 2}
+    - {fileID: 4747165848102250, guid: 8288ba703c1434b57825f4b0be2a2e29, type: 2}
     spawnDistance: 20
   - spawnPrefabs:
-    - {fileID: 4901749765560988, guid: 731133d51cffb4b10a844e559e1edeb1, type: 2}
+    - {fileID: 4180564037006804, guid: 7bc800d40c88d4c8b99bf3ff71b7a54b, type: 2}
     spawnDistance: 40
+  - spawnPrefabs:
+    - {fileID: 4032344309109564, guid: d4c5d9406e1ab45dca033715aec22a97, type: 2}
+    spawnDistance: 60
+  - spawnPrefabs:
+    - {fileID: 4168282917809702, guid: 48610f81c2a144beda60cb75ab1197ae, type: 2}
+    spawnDistance: 80
+  - spawnPrefabs:
+    - {fileID: 4989591928589734, guid: 8bf785447d8014d34b63dc1ea5d2fd90, type: 2}
+    spawnDistance: 100
+  - spawnPrefabs:
+    - {fileID: 4739164684595982, guid: a023a78754f2c4a18b8f1bada5ccad4b, type: 2}
+    spawnDistance: 110
+  - spawnPrefabs:
+    - {fileID: 4272484176801568, guid: 83d543ce6e21a4df3a91d2827050d482, type: 2}
+    spawnDistance: 130
+  - spawnPrefabs:
+    - {fileID: 4901749765560988, guid: 731133d51cffb4b10a844e559e1edeb1, type: 2}
+    spawnDistance: 150
   spawnContainer: {fileID: 4007676694805174}
   spawnLimit: -1
 --- !u!114 &114900071414439884
@@ -353,8 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizonPosition: 10
   width: 3
-  height: 2
-  speed: 4
+  height: 1.25
 --- !u!122 &122620945125003266
 Halo:
   m_ObjectHideFlags: 1
