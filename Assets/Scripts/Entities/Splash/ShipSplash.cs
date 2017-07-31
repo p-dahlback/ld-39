@@ -39,7 +39,7 @@ public class ShipSplash : MonoBehaviour
 		}
 
 		time += Time.deltaTime;
-		if (time >= soundTime) {
+		if (time >= soundTime && GameController.Instance.GameState != GameState.Start) {
 			time %= soundTime;
 			sound.Stop();
 			sound.Play();

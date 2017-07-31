@@ -30,6 +30,7 @@ public class StartScreenController : MonoBehaviour, IRotationListener, IPosition
 	// Use this for initialization
 	void Start ()
 	{
+		GameController.Instance.GameState = GameState.Start;
 	}
 	
 	// Update is called once per frame
