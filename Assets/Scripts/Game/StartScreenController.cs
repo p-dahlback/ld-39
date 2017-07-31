@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class StartScreenController : MonoBehaviour, IRotationListener, IPositionListener
 {
 	public DialogBox dialogBox;
-	public Transform introManager;
+	public Intro introManager;
 	public Transform startScreen;
 
 	public PositionToTarget playerPositioning;
@@ -38,6 +38,7 @@ public class StartScreenController : MonoBehaviour, IRotationListener, IPosition
 		if (Input.GetButtonDown("Cancel")) {
 			if (State == StartScreenState.Intro) {
 				dialogBox.CloseDialog();
+				introManager.StopCutscene();
 				StartCoroutine("PrepareForGame");
 			}
 		}
