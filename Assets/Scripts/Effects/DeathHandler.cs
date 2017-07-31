@@ -49,7 +49,7 @@ public class DeathHandler : ActorController {
 		
 	}
 
-	public override void Bounce() {
+	public override void Bounce(Transform origin) {
 		RandomSpin(bounceMultiplier);
 	}
 

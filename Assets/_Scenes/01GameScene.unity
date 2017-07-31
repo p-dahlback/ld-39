@@ -147,6 +147,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114375230463920122, guid: f83dc8ff64b26492198ada72950121bd,
+        type: 2}
+      propertyPath: bounceHeightLimitIncrease
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f83dc8ff64b26492198ada72950121bd, type: 2}
   m_IsPrefabParent: 0

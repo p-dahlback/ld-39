@@ -189,7 +189,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1920504799837674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 20}
+  m_LocalPosition: {x: 0, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4554851269689990}
@@ -409,28 +409,52 @@ MonoBehaviour:
   spawns:
   - spawnPrefabs:
     - {fileID: 4747165848102250, guid: 8288ba703c1434b57825f4b0be2a2e29, type: 2}
-    spawnDistance: 20
+    spawnDistance: 10
   - spawnPrefabs:
     - {fileID: 4180564037006804, guid: 7bc800d40c88d4c8b99bf3ff71b7a54b, type: 2}
-    spawnDistance: 40
+    spawnDistance: 35
   - spawnPrefabs:
     - {fileID: 4032344309109564, guid: d4c5d9406e1ab45dca033715aec22a97, type: 2}
-    spawnDistance: 60
+    spawnDistance: 70
   - spawnPrefabs:
     - {fileID: 4168282917809702, guid: 48610f81c2a144beda60cb75ab1197ae, type: 2}
-    spawnDistance: 80
+    spawnDistance: 90
   - spawnPrefabs:
     - {fileID: 4989591928589734, guid: 8bf785447d8014d34b63dc1ea5d2fd90, type: 2}
-    spawnDistance: 100
-  - spawnPrefabs:
-    - {fileID: 4739164684595982, guid: a023a78754f2c4a18b8f1bada5ccad4b, type: 2}
     spawnDistance: 110
   - spawnPrefabs:
+    - {fileID: 4737073443967230, guid: b0d6817c2a9964ac5a0a64e6f57304f1, type: 2}
+    spawnDistance: 120
+  - spawnPrefabs:
     - {fileID: 4272484176801568, guid: 83d543ce6e21a4df3a91d2827050d482, type: 2}
-    spawnDistance: 130
+    spawnDistance: 150
+  - spawnPrefabs:
+    - {fileID: 4714261401253468, guid: a64d788bfe36d481588c4f6a882f4ec4, type: 2}
+    spawnDistance: 160
+  - spawnPrefabs:
+    - {fileID: 4737073443967230, guid: b0d6817c2a9964ac5a0a64e6f57304f1, type: 2}
+    spawnDistance: 180
   - spawnPrefabs:
     - {fileID: 4901749765560988, guid: 731133d51cffb4b10a844e559e1edeb1, type: 2}
-    spawnDistance: 150
+    spawnDistance: 200
+  - spawnPrefabs:
+    - {fileID: 4739164684595982, guid: a023a78754f2c4a18b8f1bada5ccad4b, type: 2}
+    spawnDistance: 220
+  - spawnPrefabs:
+    - {fileID: 4989591928589734, guid: 8bf785447d8014d34b63dc1ea5d2fd90, type: 2}
+    spawnDistance: 235
+  - spawnPrefabs:
+    - {fileID: 4944626263686512, guid: 8597dd33afe2049dbbd2ff9c6b4424c5, type: 2}
+    spawnDistance: 250
+  - spawnPrefabs:
+    - {fileID: 4168282917809702, guid: 48610f81c2a144beda60cb75ab1197ae, type: 2}
+    spawnDistance: 280
+  - spawnPrefabs:
+    - {fileID: 4014903849324966, guid: 40f8e1853987d4c1b8b077e424421ad1, type: 2}
+    spawnDistance: 310
+  - spawnPrefabs:
+    - {fileID: 4931137712710300, guid: fa1cefbc754c34a1b9c46d7714ff3fdf, type: 2}
+    spawnDistance: 360
   spawnContainer: {fileID: 4007676694805174}
   spawnLimit: -1
 --- !u!114 &114900071414439884
@@ -456,9 +480,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b13f4173ccdc4fc2a78ea674c86d11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizonPosition: 10
+  horizonPosition: 20
   width: 3
-  height: 1.25
+  height: 1.5
 --- !u!122 &122620945125003266
 Halo:
   m_ObjectHideFlags: 1
@@ -479,7 +503,7 @@ LensFlare:
   m_Enabled: 1
   m_Flare: {fileID: 12100000, guid: 09ebe82dbd1113c3d000dc0b8d76c639, type: 2}
   m_Color: {r: 0.99264705, g: 0.93788034, b: 0.86856616, a: 0}
-  m_Brightness: 0.8
+  m_Brightness: 0.5
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2

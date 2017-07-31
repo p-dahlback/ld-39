@@ -96,13 +96,15 @@ public class PlayerController : ActorController {
 		}
 	}
 
-	public override void Bounce() {
+	public override void Bounce(Transform origin) {
 		var speed = player.IsDead ? bounceSpeed / 3f : bounceSpeed;
 		body.AddForce(0, speed, 0);
 		ClampToMaxSpeed();
 
-		if (heightLimitFactor < bounceHeightLimitIncrease) {
-			bounceHeightAllowance = bounceHeightLimitIncrease;
+		if (origin.gameObject.layer != (int) Layers.Booster) {
+			if (heightLimitFactor < bounceHeightLimitIncrease) {
+				bounceHeightAllowance = bounceHeightLimitIncrease;
+			}
 		}
 	}
 

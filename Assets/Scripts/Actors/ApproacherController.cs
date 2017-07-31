@@ -35,12 +35,12 @@ public class ApproacherController : ActorController
 		// Do nothing
 	}
 
-	public override void Bounce() {
+	public override void Bounce(Transform origin) {
 		// Do nothing
 	}
 
 	private bool DestroyIfPassed() {
-		if (transform.position.z < -2) {
+		if (transform.position.z < -10) {
 			Destroy(gameObject);
 			return true;
 		}

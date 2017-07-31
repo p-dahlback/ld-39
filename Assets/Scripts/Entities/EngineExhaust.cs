@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EngineExhaust : MonoBehaviour {
 
+	public ParticleSystem fireParticles;
+	public ParticleSystem smokeParticles;
+
 	public float targetScale = 1.0f;
 	public float scaleChangeFactor = 0.6f;
 
@@ -16,11 +19,24 @@ public class EngineExhaust : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (GameController.Instance.player.energy == 0) {
+			fireParticles.Stop();
+			smokeParticles.gameObject.SetActive(true);
+			smokeParticles.Play();
+		} else {
+			if (fireParticles.isStopped) {
+				fireParticles.Play();
+			}
+			if (smokeParticles.isPlaying) {
+				smokeParticles.Stop();
+			}
+		}
+
 		ApproachTargetScale();	
 	}
 
 	private void ApproachTargetScale() {
-		var currentScale = transform.localScale.x;
+		var currentScale = fireParticles.transform.localScale.x;
 		var difference = targetScale - currentScale;
 		float scale;
 		if (Mathf.Abs(difference) > 0.1) {
@@ -30,6 +46,7 @@ public class EngineExhaust : MonoBehaviour {
 		}
 		var scaleVector = transform.localScale;
 		scaleVector.Set(scale, scale, scale);
-		transform.localScale = scaleVector;
+		fireParticles.transform.localScale = scaleVector;
+		smokeParticles.transform.localScale = scaleVector;
 	}
 }

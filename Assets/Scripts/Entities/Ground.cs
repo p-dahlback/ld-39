@@ -27,7 +27,7 @@ public class Ground : MonoBehaviour {
 		if (controllers != null) {
 			foreach (var controller in controllers) {
 				if (controller.isActiveAndEnabled) {
-					controller.Bounce();
+					controller.Bounce(transform);
 				}
 			}
 		}
