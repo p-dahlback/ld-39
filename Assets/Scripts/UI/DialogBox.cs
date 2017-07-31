@@ -28,6 +28,7 @@ public class DialogBox : MonoBehaviour {
 		textBox.text = dialog;
 		textBox.gameObject.SetActive(false);
 		portrait.gameObject.SetActive(true);
+		portraitAnimator.SetBool("Start", true);
 		portraitAnimator.SetBool("Damaged", damaged);
 		portraitAnimator.SetBool("Close", false);
 		StopCoroutine("CloseComms");
@@ -35,6 +36,7 @@ public class DialogBox : MonoBehaviour {
 	}
 
 	IEnumerator DisplayTextAfterCommsOpened(float uptime) {
+		portraitAnimator.SetBool("Start", false);
 		yield return new WaitForSeconds(0.3f);
 		textBox.gameObject.SetActive(true);
 		yield return new WaitForSeconds(uptime);
@@ -46,6 +48,7 @@ public class DialogBox : MonoBehaviour {
 
 	IEnumerator CloseComms() {
 		if (portraitAnimator.isActiveAndEnabled) {
+			portraitAnimator.SetBool("Start", false);
 			portraitAnimator.SetBool("Close", true);
 			yield return new WaitForSeconds(0.3f);
 		}

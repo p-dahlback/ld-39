@@ -25,7 +25,6 @@ public class RotateToTarget : MonoBehaviour
 		var angle = Mathf.LerpAngle (rotation, targetRotation.y, rotationChangeSpeed * Time.deltaTime);
 		transform.rotation = Quaternion.Euler(0, angle, 0);
 		var difference = Mathf.DeltaAngle (angle, targetRotation.y);
-		Debug.Log("Lerp from " + rotation + " to " + targetRotation.y + ": " + angle + ", difference " + difference);
 		if (difference <= 0.5f) {
 			transform.rotation = targetRotation;
 			if (listener != null) {

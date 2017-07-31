@@ -57,6 +57,18 @@ public class StartScreenController : MonoBehaviour, IRotationListener, IPosition
 		}
 	}
 
+	public void AssumePosition() {
+		if (!cameraInPosition) {
+			autoRotate.enabled = false;
+			cameraRotation.enabled = true;
+			cameraRotation.listener = this;
+		}
+		if (!playerInPosition) {
+			playerPositioning.enabled = true;
+			playerPositioning.listener = this;
+		}
+	}
+
 	public void RotationChangeFinished(Quaternion newRotation) {
 		cameraInPosition = true;
 		StartGameIfOk();
@@ -74,15 +86,7 @@ public class StartScreenController : MonoBehaviour, IRotationListener, IPosition
 
 	private void StartGameIfOk() {
 		if (State == StartScreenState.End) {
-			if (!cameraInPosition) {
-				autoRotate.enabled = false;
-				cameraRotation.enabled = true;
-				cameraRotation.listener = this;
-			}
-			if (!playerInPosition) {
-				playerPositioning.enabled = true;
-				playerPositioning.listener = this;
-			}
+			AssumePosition();
 		}
 
 		if (cameraInPosition && playerInPosition && State == StartScreenState.End) {
