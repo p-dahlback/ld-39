@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -50,7 +51,45 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void PlayerDied() {
-		dialogBox.SetDialog("aaahh!", true, 2.0f);
+		var random = Random.Range(0, 4);
+		switch (random) {
+		case 0:
+			dialogBox.SetDialog("not like thiiiis!", true, 2.0f);
+			break;
+		case 1:
+			dialogBox.SetDialog("who even built all of this!", true, 2.0f);
+			break;
+		case 2:
+			dialogBox.SetDialog("i'm registering a complaaaiint!", true, 2.0f);
+			break;
+		case 3:
+			dialogBox.SetDialog("come on baby, hold together!", true, 2.0f);
+			break;
+		}
+	}
+
+	public void PlayerTookDamage() {
+		var random = Random.Range(0, 6);
+		switch(random) {
+		case 0:
+			dialogBox.SetDialog("aaahh!", true, 2.0f);
+			break;
+		case 1:
+			dialogBox.SetDialog("nooo!", true, 2.0f);
+			break;
+		case 2:
+			dialogBox.SetDialog("that's not fair!", true, 2.0f);
+			break;
+		case 3:
+			dialogBox.SetDialog("why did this happen!", true, 2.0f);
+			break;
+		case 4:
+			dialogBox.SetDialog("oww!", true, 2.0f);
+			break;
+		case 5:
+			dialogBox.SetDialog("i bid my dongue!", true, 2.0f);
+			break;
+		}
 	}
 
 	private void GameStateDidChange(GameState oldState, GameState newState) {
@@ -59,6 +98,9 @@ public class GameController : MonoBehaviour {
 			DestroySpawns();
 		}
 
+		if (newState == GameState.GameOver) {
+			StartCoroutine("GameOverGab");
+		}
 	}
 
 	private void DestroySpawns() {
@@ -69,5 +111,22 @@ public class GameController : MonoBehaviour {
 		foreach (var child in children) {
 			Destroy(child.gameObject);
 		}
+	}
+
+	IEnumerator GameOverGab() {
+		yield return new WaitForSeconds(2.0f);
+		switch(Random.Range(0, 3)) {
+		case 0:
+			dialogBox.SetDialog("but what about the galaxy...", true, 2.0f);
+			break;
+		case 1:
+			dialogBox.SetDialog("um, i meant to do that", false, 2.0f);
+			break;
+		case 2:
+			dialogBox.SetDialog("stupid windows 98!", true, 2.0f);
+			break;
+		}
+		yield return new WaitForSeconds(4.0f);
+		SceneManager.LoadSceneAsync(1);
 	}
 }

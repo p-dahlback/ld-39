@@ -96,6 +96,10 @@ public class Player : Entity {
 		}
 	}
 
+	protected override void OnDamage() {
+		GameController.Instance.PlayerTookDamage();
+	}
+
 	protected override void OnDeath() {
 		foreach (var engine in engines) {
 			engine.gameObject.SetActive(false);

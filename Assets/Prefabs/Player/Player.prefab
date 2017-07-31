@@ -577,7 +577,7 @@ MonoBehaviour:
   currentSpeed: 0
   maxEnergy: 10
   energy: 0
-  energyExpenditureRate: 0.9
+  energyExpenditureRate: 0.8
   energySlowExpenditureRate: 1.2
   energyFastExpenditureRate: 1.2
   expendEnergy: 1
