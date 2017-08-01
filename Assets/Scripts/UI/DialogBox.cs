@@ -11,6 +11,7 @@ public class DialogBox : MonoBehaviour {
 
 	public AudioSource openSound;
 	public AudioSource closeSound;
+	public AudioSource talkSound;
 
 	// Use this for initialization
 	void Start () {
@@ -40,9 +41,12 @@ public class DialogBox : MonoBehaviour {
 
 	IEnumerator DisplayTextAfterCommsOpened(float uptime) {
 		openSound.Play();
+		var damaged = portraitAnimator.GetBool("Damaged");
 		portraitAnimator.SetBool("Start", false);
 		yield return new WaitForSeconds(0.3f);
 		textBox.gameObject.SetActive(true);
+		talkSound.pitch = damaged ? 1.1f : 1f;
+		talkSound.Play();
 		yield return new WaitForSeconds(uptime);
 		portraitAnimator.SetBool("Close", true);
 		closeSound.Play();
